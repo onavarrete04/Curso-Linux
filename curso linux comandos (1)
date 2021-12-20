@@ -165,3 +165,7 @@ ifconfig eth0 -> muestra configuracion adaptador etherner
 
 curl url ->  muestra el contenido de un archivo
 curl -0 url -> accede al archivo en la url dada y lo guarda
+
+
+
+-->>>>> Comandos básicos aplicados -----> Culminada parte 1 del curso
