@@ -1,0 +1,167 @@
+whoami -> ombre del usuario actual
+id -> identificacion del usuario y del grupo actual
+date -> fecha y hora actual
+date "+%D" -> formato mm/dd/aa
+ls -> lista de archivos
+ls -l -> enumera archivos
+ls /bin -> todos los archivos de un directorio
+ls /bin/b* -> todos los archivos en el directori oque inician con bin
+Opción	Descripción
+-a	enumerar todos los archivos, incluidos los archivos ocultos
+-D	enumerar los directorios en sí mismos, no su contenido
+-h	con -l y -s, tamaños de impresión como 1K, 234M, 2G, etc.
+-l	lista larga de archivos que incluyen información sobre permisos, propietario, tamaño, etc.
+-F	clasifique los archivos agregando un indicador de tipo como *, / etc. a los nombres de los archivos
+-r	orden inverso al ordenar
+-S	ordenar por tamaño de archivo, el más grande primero
+-t	ordenar por hora, las más recientes primero
+ls -la /etc -> archivos ocultos
+ls -lt -> ultima fecha de modificación
+ls -ld -> atributo directorio actual
+ls -lS -> ordenados por tamaño descendente
+ls -lrS -> ordenar forma ascendente
+
+uname -> nombre del sistema opertivo
+uname -a -> toda información del sistema operativo y kernel, host, hadware
+ps -> todos los procesos activos
+ps -e -> procesos que se ejecutan en el sistema incluyendo los de otros usuarios
+top -> informacion del sistema, procesos y subprocesos
+top -n 10 -> muestra 10 procesos y se sale automaticamente
+M - ordenar por uso de memoria
+P - ordenar por uso de CPU
+N - ordenar por ID de proceso
+T - ordenar por tiempo de ejecución
+-
+echo -> mensaje
+echo "menaje \n otra linea"
+echo "mensaje \t tabulación"
+
+se debe utilizar echo -e con los caaracteres especiales
+
+wget -> descargar archivo de internet, se pone la urel y ya
+
+man -> manual de referencia
+
+man ls -> manual del contador
+
+pwd -> directorio actual
+
+mkdir -> crea un directorio 
+
+mkdir /tmp/dummy -> se puede especificar ruta donde se guarde el directorio
+
+ls /tmp -> listara los archivos creados
+
+rmdir -> elimina directorios, tambien puede eliminar con ruta
+
+find -> busca un archivo según la categoria que se le de, busca en un directorio y subcarpetas
+
+find /etc -name "*.txt" -> busca un archivo txt, * es todos
+
+df -> información del dispositivo, espacio usado, disponible, puntos de montaje
+df -h -> muestra los archivos más facil de entender
+
+-------------------ADMINISTRACIÓN DE ARCHIVOS ------------
+
+cat -> contenido de los archivos
+more -> muestra el contenido del archivo por pagina
+head -> muestra las primeras 10 lineas del archivo
+head -3 -> puede especificar el numero de lineas
+tail -> ultimas lineas de un archivo
+tail -2 -> muestra las lineas que queramos
+
+cp -> copiar archivos (cp usdoi.txt usdoi-backup.txt)
+copia contenido de un directorio actual a un archivo (cp /etc/passwd users.txt)
+
+mv -> mover nombre del archivo, si el archivo existe se sobreescribe en el destino
+mv users.txt user-info.txt, si el destino es el mismo es como una operacion de cambio de nombre
+
+touch -> archivo en blanco
+rm -i miarchivo -> elimina archivo, el -i es un aviso informativo antes de borrarlo
+
+
+tar -> creador y administrador de archivos
+El comando tar le permite copiar varios archivos y directorios en un solo archivo.
+
+El siguiente comando crea un archivo de todo el directorio '/ bin' en un archivo llamado bin.tar.
+
+Las opciones utilizadas son las siguientes:
+El comando tar le permite copiar varios archivos y directorios en un solo archivo.
+
+El siguiente comando crea un archivo de todo el directorio '/ bin' en un archivo llamado bin.tar.
+
+Las opciones utilizadas son las siguientes: 
+C	Crear nuevo archivo de almacenamiento
+-v	Lista detallada de archivos procesados
+-F	Nombre del archivo de almacenamiento
+ejemplo tar -cvf bin.tar /bin
+
+lista de los archivos -> tar -tvf bin.tar, se utiliza la t
+
+tar -x -> descomprimir el archivo
+
+zip -> comprime archivos
+zip config.zip /etc/*.conf -> comprime todos los archivos.conf
+zip -r -> comprime todo un directorio
+
+----------------------control de acceso
+
+Permiso	símbolo
+leer	    r
+escribir	w
+ejecutar	X
+
+ls -l -> ver persmisos de un archivo
+
+-rw-r - r-- 1 theia theia 8121 31 de mayo 16:45 usdoi.txt
+
+Los permisos establecidos aquí son 'rw-r - r--' Aquí, el propietario tiene permisos de lectura y escritura, el propietario del grupo tiene permiso de lectura y otros también tienen permiso de lectura.
+
+chmod -> cambiar permisos establecidos de un archivo
+
+Opción	     Descripción.
+r, w y x |	que representan permisos de lectura, escritura y ejecución respectivamente
+u, gyo   |  que representan las categorías de usuario propietario, grupo y otros, respectivamente
++, -     |  que representan operaciones de concesión y revocación respectivamente
+
+chmod -r usdoi.txt   -> elimina el permiso de lectura para todos
+chmod +r usdoi.txt   -> añade permiso de lectura para todos  
+chmod o-r usdoi.txt  -> elimina permiso de lectura de otros  
+
+------------------- procesamiento de texto ----------------
+
+wc -> contar lineas de un archivo, da numero de lineas, numero de palabras y de caaracteres
+wc -l -> muestra solo el numero de lineas
+wc -w -> muestra solo el nuemero de palabras
+wc -c -> muestra solo numero de caracteres
+
+----- busqueda de texto
+
+grep -> permite buscar lineas con un patron de texto de entrada
+grep people nombre_archivo -> busca una palabra especifica y la subraya
+
+Opción	Descripción.
+-n	Junto con las líneas coincidentes, imprima también los números de línea.
+-C	    Obtenga el recuento de líneas coincidentes
+-I	    Ignore las mayúsculas y minúsculas del texto al hacer coincidir
+-v	    Imprime todas las líneas que no contienen el patrón.
+-w	    Coincidir solo si el patrón coincide con palabras completas
+
+---- host
+
+hostname -> nombre del host name
+hostname -i -> muestra direccion ip
+ping -> comprobar si un host es accesible
+
+ping www.google.comando -> comprueba si el host es accesible
+
+ping -c 5 www.google.com -> solo hace ping cinco veces
+
+---- configuracion interaz de red
+
+ifconfig -> visualiza configuracion de las interfaces de red
+
+ifconfig eth0 -> muestra configuracion adaptador etherner
+
+curl url ->  muestra el contenido de un archivo
+curl -0 url -> accede al archivo en la url dada y lo guarda
