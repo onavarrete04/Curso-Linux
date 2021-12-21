@@ -1,0 +1,61 @@
+
+Ejercicio:
+
+Crear un script
+
+1) Aceptar un nombre de usuario
+2) Imprime un mensaje de bienvenida al usuario
+
+el # significa que es un comentario no ejecutable
+
+Se crea primero el archivo, este debe ser .sh, indicando que es un ejecutable
+
+Crear las instrucciones o el código dentro del archivo
+
+Guardar el archivo
+
+Ejecutar el archivo
+
+->> Ejecución del script
+
+primero vamos a mirar que permisos tiene el archivo
+
+puede hacerse asi:
+
+ls -l nombre del archivo
+
+confirmando los permisos se ejecutable
+
+bash nombre_del_archivo.sh
+
+
+---> SHABANG 
+
+a) se usa which para encontrar la ruta de comando:
+
+which bash 
+
+b) Se edita el script 
+
+#! /bin/bash
+
+c) abra el archivo
+
+nano nombre_del_archivo
+
+d) verificar permisos del archivo
+
+chmod +x nombre_del_archivo
+
+# No es adecuado brindar permisos a todos los usuarios, grupos por igual, es mejor limitarlo al propietario del archivo
+
+chmod u+x nombre_del_archivo
+
+e) Ejecutar el archivo
+
+./nombre_del_archivo
+
+. -> hace referencia al directorio actual, y le estamos diciendo que ese documento esta ahi
+
+# Se pueden ejecutar otros comandos, por ejemplo un txt, pero como este no tiene lineas no se podrá hacer nada y dara command no found
+
