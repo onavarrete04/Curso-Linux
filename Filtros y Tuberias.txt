@@ -1,0 +1,171 @@
+
+
+--- METACARACTERES
+
+# Hay caracteres con sifnificados especiales para el caparazon
+
+1) # -> comentarios
+2) ; -> separa varios comandos entre si (pwd;date)
+3) * -> todos los nombres, o todos los numeros (ls /etc/*.conf)
+4) ? -> todos los archivos, despues de un nombre seguido -> (ls /bin/?grep)
+
+---- COTIZACIÓN
+
+En ocasiones necesitaremos utilizar los caracteres especiales, para hacer operaciones
+por ejemplo operaciones matematicas
+
+si decimos (echo El simbolo de multiplicación es *) y lo ejecutamos, seguramente saldran 
+todas los archivos que se encuentran
+
+solucion: echo El simbolo de multiplicación es \*
+
+-> \ elimina su funcion
+
+-> '' -> las comillas simples eliminan los significados de los caracterse especiales, menos de la comilla simples
+(echo 'Following are some special characters in shell - < > ; " ( ) \ [ ]  ')
+
+-> "" -> comillas dobles eliminan significados especiales excepto comillas dobles, sustitución de variable y comando
+
+--- VARIABLES 
+
+set -> enumera las variables ya definidas en la shell 
+
+para crear una variable se usa el = y todo debe ir pegado
+
+variable_ejemplo=123 -> si se hace asi variable_ejemplo = 123 daria command not found
+
+# En este caso hay muchisisimas variables, no se donde esta variable_ejemplo
+
+# crear la variable regular en una variable de entorno
+
+export balance
+
+# para consultar las variables de entorno:
+
+env
+
+# las variables entorno se copian en procesos hijos de la shell
+
+$ -> muestra las variables (echo "Current account balance is $balance")
+
+unset -> elimina la variable
+unset balance
+
+--- SUSTITUCIÓN DE COMANDOS
+
+# Es una caracteristica del shel que ayuda a guardar una salida
+genera por un comendo en una variable
+
+ejemplo -> myIp = $(hostname -i)
+
+ls -l `which cat` -> la comilla es especial
+
+----- REDICIONAMIENTO I/O 
+
+
+Símbolo	Significado
+<	Redirección de entrada
+>	Redirección de salida
+>>	Agregar salida
+2>	Redirección de errores
+
+ejemplo: 
+
+if config > output.txt 
+
+Se crea un archivo llamado output.txt y muestra la información
+
+date > output.txt
+
+Esta acción hace que se sobreescribe, es decir que se pierde la información anterior.
+
+uname -a >> newoutput.txt 
+date >> newoutput.txt
+
+Haciendo con >> se añade una linea y se guarda toda la información
+
+tr -> reconoce caracteristicas en un archivo, como mayusculas
+
+tr "[a-z]" "[A-Z]" < newoutput.txt
+
+Esta linea convierte todo en mayusculas
+
+---- TUBERIAS Y Filtros
+
+Permite canalizar comandos, combinando comandos no relacionados, la salida
+de un comando nos envia a la entrada de otro
+
+SOLO LOS COMANDOS DE FILTRADO SE PUEDEN USAR DE ESTA MANERA.
+
+un comando filtro es uno que puede aceptar una entrada estandar y enviar una salida estandar
+
+ejemplo:
+
+ls | wc -l
+
+[ls] lista los archivos | wc -l cuenta las lineas que existen
+
+al final muestran cuantos archivos hay
+
+df - h | grep overlay
+
+df -h -> muestra el uso del disco para todos los sistemas
+grep overlay -> superpone el overlay en la salida
+
+ls - lS /bin | head -6
+
+ls -l -> lista larga de archivos con permisos
+S -> ordena de mayor a menor
+/bin -> ubicación
+head -6 -> lee solo los 6 más grandes
+
+
+---- ARGUMENTOS LINEA DE COMANDOS
+
+Son una forma conveniente de pasar entradas a un script
+
+->
+
+#! /bin/bash
+
+echo "Hi $1 $2"
+
+#$1 is the first argument passed to the script
+
+echo "$1 is your firstname"
+
+#$2 is the second argument passed to the script
+echo "$2 is your lastname"
+
+->
+
+->
+
+#! /bin/bash
+
+dircount=$(find $1 -type d|wc -l)
+
+filecount=$(find $1 -type f|wc -l)
+
+echo "There are $dircount directories in the directory $1"
+
+echo "There are $filecount files in the directory $1"
+
+->
+
+# creando variable color - dato verde claro
+color = "verde claro"
+
+# mostrar archivos que inicien con b y esten en el directorio /var/Looking
+
+ls -lS /var/log | grep "b" -> muestra todos los que tienen una balance
+ls /var/log/b*.log
+
+contar todos los archivos que inician en comandos comandos
+ls /bin/c* | wc - l
+
+echo $color > color.txt
+cat color
+
+grep warning /var/log/bootstrap.log | head -5 (esta fue mi solución)
+grep warning /var/log/bootstrap.log|tail -5 (solución correcta) 
