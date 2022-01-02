@@ -1,0 +1,39 @@
+Cron es un programa especial que se ejecuta en segundo plano
+para ejecutar tareas designadas en un momento especifico
+
+Básicamente es un archivo de texto simple que contiene una
+lista de compatibleVendorPrefixesy se edita con el comando 
+crontab
+
+Fechas y horas
+
+minuto (0-59)
+hora (0-23, 0 = medianoche)
+día (1-31)
+mes (1-12)
+día de la semana (0-6, 0 = domingo)
+
+los espacios se separan con \n
+
+
+AGREGAR UN crontab
+
+crontab -e -> creara un archivo para agregar un trabajo con  cron
+
+0 21 * * * echo "Welcome to cron" >> /tmp/echo.txt
+Quiere decir que se ejecutara a las 9 de la noche en el minuto 0
+todos los días.
+
+crontab -l -> verifica si existen crontab
+
+creación de script de shell.
+
+a) se crea el archivo con .sh
+b) se guarda los comandos en el archivo
+c) se guarda el archivo
+d) se le dan permisos al archivo
+e) se ejecuta ./nombre del archivo
+
+crontab -r -> elimina el crontab actual
+
+crontab -l -> verifica los crontab actuales
